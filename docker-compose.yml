@@ -1,0 +1,16 @@
+version: '3.2'
+
+services:
+  Redis:
+    image: multi-port-redis
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+     - "6379:6379"
+     - "7999:7999"
+    environment:
+      REDIS_PORT: 6379
+      TO_REDIRECT_PORT: 7999
+    cap_add:
+      - NET_ADMIN
